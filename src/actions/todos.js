@@ -3,21 +3,21 @@ export const ADD_TODO = 'ADD_TODO'
 export const REMOVE_TODO = 'REMOVE_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
 
-function addTodoAction (todo) {
+function addTodo (todo) {
     return {
         type: ADD_TODO,
         todo,
     }
 }
 
-function removeTodoAction (id) {
+function removeTodo (id) {
     return {
         type: REMOVE_TODO,
         id,
     }
 }
 
-function toggleTodoAction (id) {
+function toggleTodo (id) {
     return {
         type: TOGGLE_TODO,
         id,
@@ -29,7 +29,7 @@ function handleAddTodo (name, cb){
     return (dispatch) => {
         return API.saveTodo(name)
         .then((todo) => {
-          dispatch(addTodoAction(todo))
+          dispatch(addTodo(todo))
           cb()
         })
         .catch(()=> {
@@ -41,11 +41,11 @@ function handleAddTodo (name, cb){
 
 function handleDeleteTodo (todo) {
     return (dispatch) => {
-        dispatch(removeTodoAction(todo.id)) 
+        dispatch(removeTodo(todo.id)) 
 
         return API.deleteTodo(todo.id) 
         .catch(() => {
-            dispatch(addTodoAction(todo))
+            dispatch(addTodo(todo))
             alert('An error occurred, try delete again')
         })
     }
@@ -53,11 +53,11 @@ function handleDeleteTodo (todo) {
 
 function handleToggle (id) {
     return (dispatch) => {
-        dispatch(toggleTodoAction(id))
+        dispatch(toggleTodo(id))
 
         return API.saveTodoToggle(id)
         .catch(() => {
-            dispatch(toggleTodoAction(id))
+            dispatch(toggleTodo(id))
             alert('An error in toggling occured, try again')
         })
     }
