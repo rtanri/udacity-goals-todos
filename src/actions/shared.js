@@ -1,1 +1,1 @@
-//for our shared items that send across Reducer
+//for our actions that used across Reducer
