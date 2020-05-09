@@ -1,3 +1,6 @@
+import API from 'goals-todos-api'
+
+
 //we export them so that we can import them in Reducer folder
 export const ADD_TODO = 'ADD_TODO'
 export const REMOVE_TODO = 'REMOVE_TODO'
@@ -25,7 +28,7 @@ function toggleTodo (id) {
 }
 
 
-function handleAddTodo (name, cb){
+export function handleAddTodo (name, cb){
     return (dispatch) => {
         return API.saveTodo(name)
         .then((todo) => {
@@ -39,7 +42,7 @@ function handleAddTodo (name, cb){
     }
   }
 
-function handleDeleteTodo (todo) {
+export function handleDeleteTodo (todo) {
     return (dispatch) => {
         dispatch(removeTodo(todo.id)) 
 
@@ -51,7 +54,7 @@ function handleDeleteTodo (todo) {
     }
 }
 
-function handleToggle (id) {
+export function handleToggle (id) {
     return (dispatch) => {
         dispatch(toggleTodo(id))
 
