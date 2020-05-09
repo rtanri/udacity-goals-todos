@@ -1,6 +1,5 @@
 import API from 'goals-todos-api'
 
-
 export const ADD_GOAL = 'ADD_GOAL'
 export const REMOVE_GOAL = 'REMOVE_GOAL'
 
@@ -18,7 +17,7 @@ function removeGoal (id) {
     }
 }
 
-
+//we export syncronous action item because we use this other components
 export function handleAddGoal(name, cb){
     return (dispatch) => {
       return API.saveGoal(name)
@@ -32,7 +31,7 @@ export function handleAddGoal(name, cb){
   
 
 export function handleDeleteGoal(goal){
-    return(dispatch) => {
+    return (dispatch) => {
       dispatch(removeGoal(goal.id))
 
         return API.deleteGoal (goal.id)
