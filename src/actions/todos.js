@@ -23,3 +23,42 @@ function toggleTodoAction (id) {
         id,
     }
 }
+
+
+function handleAddTodo (name, cb){
+    return (dispatch) => {
+        return API.saveTodo(name)
+        .then((todo) => {
+          dispatch(addTodoAction(todo))
+          cb()
+        })
+        .catch(()=> {
+          alert('Error in adding todo list, try again')
+          // this.input.value = '' 
+        })
+    }
+  }
+
+function handleDeleteTodo (todo) {
+    return (dispatch) => {
+        dispatch(removeTodoAction(todo.id)) 
+
+        return API.deleteTodo(todo.id) 
+        .catch(() => {
+            dispatch(addTodoAction(todo))
+            alert('An error occurred, try delete again')
+        })
+    }
+}
+
+function handleToggle (id) {
+    return (dispatch) => {
+        dispatch(toggleTodoAction(id))
+
+        return API.saveTodoToggle(id)
+        .catch(() => {
+            dispatch(toggleTodoAction(id))
+            alert('An error in toggling occured, try again')
+        })
+    }
+}
