@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux' //to simplify the ConnectedComponent
 import List from './List'
-import { handleAddGoal, handleDeleteGoal } from '../actions/todos'
+import { handleAddGoal, handleDeleteGoal } from '../actions/goals'
 
 
 class Goals extends React.Component {
